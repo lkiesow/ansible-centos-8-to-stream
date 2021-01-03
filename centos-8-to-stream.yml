@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: fail early if os is not centos 8
+      assert:
+        that: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '8'
+
+    - name: upgrade all packages
+      dnf:
+        name: '*'
+        state: latest
+
+    - name: install centos-release-stream
+      package:
+        state: present
+        name: centos-release-stream
+
+    - name: switch to stream
+      command:
+        cmd: dnf distro-sync -y
+        warn: false
+
+    - name: reboot the system
+      reboot:
