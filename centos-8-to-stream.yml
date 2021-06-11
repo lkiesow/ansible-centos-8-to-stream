@@ -22,7 +22,7 @@
 
     - name: switch to stream
       command:
-        cmd: dnf swap centos-linux-repos centos-stream-repos
+        cmd: dnf swap centos-linux-repos centos-stream-repos -y
         warn: false
 
     - name: sync distro
