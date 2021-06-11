@@ -1,4 +1,8 @@
 ---
+
+# Follows the guide
+# https://ostechnix.com/how-to-migrate-to-centos-stream-8-from-centos-linux-8/
+
 - hosts: all
   become: true
   tasks:
